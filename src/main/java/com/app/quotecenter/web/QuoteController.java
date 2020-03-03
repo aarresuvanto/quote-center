@@ -2,6 +2,7 @@ package com.app.quotecenter.web;
 
 import com.app.quotecenter.domain.Quote;
 import com.app.quotecenter.domain.QuoteRepository;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,5 +37,11 @@ public class QuoteController {
     public String deleteQuote(@PathVariable("id") Long quoteId, Model model) {
         quoteRepository.deleteById(quoteId);
         return "redirect:/newquote";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editQuote(@PathVariable("id") Long quoteId, Model model) {
+        model.addAttribute("quote", quoteRepository.findById(quoteId));
+        return "editquote";
     }
 }
