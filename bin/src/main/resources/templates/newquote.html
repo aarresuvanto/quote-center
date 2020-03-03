@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>New Quote</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/newprofile}">Sign up</a>
+    <h3>Add a new quote</h3>
+    <form action="#" th:action="@{/savequote}" th:object="${quote}" method="post">
+        <input type="text" th:field="*{text}"></p>
+        <input type="submit" value="Submit">
+    </form>
+    <ul th:each="quote : ${quotes}">
+        <li th:text="${quote.text}"></li>
+        <a th:href="@{/delete/{id}(id=${quote.quoteId})}">Delete</a>
+        <a th:href="@{/edit/{id}(id=${quote.quoteId})}">Edit</a>
+    </ul>
+</div>
+</body>
+</html>
