@@ -6,6 +6,7 @@
 </head>
 <body>
 <div>
+    <a th:href="@{/newprofile}">Sign up</a>
     <h3>Add a new quote</h3>
     <form action="#" th:action="@{/savequote}" th:object="${quote}" method="post">
         <input type="text" th:field="*{text}"></p>
