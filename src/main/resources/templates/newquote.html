@@ -13,11 +13,9 @@
         <input type="submit" value="Submit">
     </form>
     <ul th:each="quote : ${quotes}">
-        <div>
-            <li th:text="${quote.text}"></li>
-            <a th:href="@{/delete/{id}(id=${quote.id})}">Delete</a>
-            <a th:href="@{/edit/{id}(id=${quote.id})}">Edit</a>
-        </div>
+        <li th:text="${quote.text}"></li>
+        <a th:href="@{/delete/{id}(id=${quote.quoteId})}">Delete</a>
+        <a th:href="@{/edit/{id}(id=${quote.quoteId})}">Edit</a>
     </ul>
 </div>
 </body>
