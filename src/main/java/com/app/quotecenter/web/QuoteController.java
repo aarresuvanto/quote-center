@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -29,5 +30,11 @@ public class QuoteController {
         quoteRepository.save(quote);
         List<Quote>quotes = (List<Quote>) quoteRepository.findAll();
         return"redirect:/newquote";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteQuote(@PathVariable("id") Long quoteId, Model model) {
+        quoteRepository.deleteById(quoteId);
+        return "redirect:/newquote";
     }
 }
