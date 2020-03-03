@@ -11,6 +11,9 @@
         <input type="text" th:field="*{text}"></p>
         <input type="submit" value="Submit">
     </form>
+    <ul th:each="quote : ${quotes}">
+        <li th:text="${quote.text}"></li>
+    </ul>
 </div>
 </body>
 </html>
