@@ -3,6 +3,7 @@ package com.app.quotecenter.web;
 import com.app.quotecenter.domain.User;
 import com.app.quotecenter.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +23,16 @@ public class UserController {
     }
 
     @PostMapping("/saveuser")
-        public String saveProfile(@ModelAttribute User user) {
-            userRepository.save(user);
-            System.out.println(userRepository.findAll());
-            return "redirect:/newquote";
-        }
+    public String saveProfile(@ModelAttribute User user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return "redirect:/newquote";
+    }
+
+    @GetMapping("/signin")
+    public String signIn() {
+        return "signin";
+    }
 
 }

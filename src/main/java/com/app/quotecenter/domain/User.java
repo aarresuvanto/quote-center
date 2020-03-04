@@ -13,7 +13,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String username;
-    private String passwordHash;
+    private String password;
     private String eMail;
 
     // Connecting user and quotes
@@ -23,11 +23,11 @@ public class User {
 
     public User() {}
 
-    public User(String firstName, String lastName, String username, String passwordHash, String eMail) {
+    public User(String firstName, String lastName, String username, String password, String eMail) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.eMail = eMail;
     }
 
@@ -63,12 +63,12 @@ public class User {
         this.username = username;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String geteMail() {
@@ -94,7 +94,7 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
-                ", passwordHash='" + passwordHash + '\'' +
+                ", password='" + password + '\'' +
                 ", eMail='" + eMail + '\'' +
                 ", quotes=" + quotes +
                 '}';
