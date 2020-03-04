@@ -1,20 +1,25 @@
 package com.app.quotecenter.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.org.apache.xpath.internal.operations.Quo;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long userId;
     private String firstName;
     private String lastName;
     private String username;
     private String passwordHash;
     private String eMail;
+
+    // Connecting user and quotes
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Quote>quotes;
 
     public User() {}
 
@@ -26,12 +31,12 @@ public class User {
         this.eMail = eMail;
     }
 
-    public long getId() {
-        return id;
+    public long getUserId() {
+        return userId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(long userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
@@ -74,15 +79,24 @@ public class User {
         this.eMail = eMail;
     }
 
+    public List<Quote> getQuotes() {
+        return quotes;
+    }
+
+    public void setQuotes(List<Quote> quotes) {
+        this.quotes = quotes;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "userId=" + userId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
                 ", passwordHash='" + passwordHash + '\'' +
                 ", eMail='" + eMail + '\'' +
+                ", quotes=" + quotes +
                 '}';
     }
 }
