@@ -15,6 +15,7 @@ public class User {
     private String username;
     private String password;
     private String eMail;
+    private String role = "USER";
 
     // Connecting user and quotes
 
@@ -23,12 +24,13 @@ public class User {
 
     public User() {}
 
-    public User(String firstName, String lastName, String username, String password, String eMail) {
+    public User(String firstName, String lastName, String username, String password, String eMail, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
         this.eMail = eMail;
+        this.role = role;
     }
 
     public long getUserId() {
@@ -79,6 +81,14 @@ public class User {
         this.eMail = eMail;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public List<Quote> getQuotes() {
         return quotes;
     }
@@ -96,6 +106,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", eMail='" + eMail + '\'' +
+                ", role='" + role + '\'' +
                 ", quotes=" + quotes +
                 '}';
     }

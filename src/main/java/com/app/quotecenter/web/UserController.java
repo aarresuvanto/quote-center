@@ -35,4 +35,9 @@ public class UserController {
         return "signin";
     }
 
+    @GetMapping("/success")
+    public String signInSuccess() {
+        return "success";
+    }
+
 }
