@@ -3,6 +3,8 @@ package com.app.quotecenter.web;
 import com.app.quotecenter.domain.User;
 import com.app.quotecenter.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +35,12 @@ public class UserController {
     @GetMapping("/signin")
     public String signIn() {
         return "signin";
+    }
+
+    @GetMapping("/signout")
+    public String signOut() {
+        SecurityContextHolder.getContext().setAuthentication(null);
+        return "redirect:/newquote";
     }
 
     @GetMapping("/success")

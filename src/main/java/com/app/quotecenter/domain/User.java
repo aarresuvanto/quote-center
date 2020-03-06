@@ -1,7 +1,5 @@
 package com.app.quotecenter.domain;
 
-import com.sun.org.apache.xpath.internal.operations.Quo;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,6 +22,7 @@ public class User {
 
     public User() {}
 
+    // Remove role from constructor before deploying
     public User(String firstName, String lastName, String username, String password, String eMail, String role) {
         this.firstName = firstName;
         this.lastName = lastName;

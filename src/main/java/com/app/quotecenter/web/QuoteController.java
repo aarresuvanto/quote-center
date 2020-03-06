@@ -2,8 +2,11 @@ package com.app.quotecenter.web;
 
 import com.app.quotecenter.domain.Quote;
 import com.app.quotecenter.domain.QuoteRepository;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.app.quotecenter.domain.User;
+import com.app.quotecenter.domain.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,13 +14,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
 @Controller
 public class QuoteController {
 
     @Autowired
     QuoteRepository quoteRepository;
+
+    @Autowired
+    UserRepository userRepository;
+
+    @GetMapping("/")
+    public String welcomeScreen() {
+        return "welcome";
+    }
 
     @GetMapping("/newquote")
     public String newQuoteForm(Model model) {
@@ -28,8 +37,11 @@ public class QuoteController {
 
     @PostMapping("/savequote")
     public String saveQuote(@ModelAttribute Quote quote) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserUsername = auth.getName();
+        User currentUser = userRepository.findByUsername(currentUserUsername);
+        quote.setUser(currentUser);
         quoteRepository.save(quote);
-        List<Quote>quotes = (List<Quote>) quoteRepository.findAll();
         return"redirect:/newquote";
     }
 
