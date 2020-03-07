@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>All quotes</title>
+</head>
+<body>
+<div>
+    <div sec:authorize="isAuthenticated()">
+        <h3 sec:authentication="name"></h3>
+    </div>
+    <h3>Quotes by all users</h3>
+    <ul th:each="quote : ${quotes}">
+        <li th:text="${quote.text} + ', by ' + ${quote.user.getUsername()}"></li>
+    </ul>
+</div>
+</body>
+</html>

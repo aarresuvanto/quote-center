@@ -1,6 +1,6 @@
 package com.app.quotecenter.domain;
 
-import com.sun.org.apache.xpath.internal.operations.Quo;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,13 +8,15 @@ import java.util.List;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name="native", strategy = "native")
     private long userId;
     private String firstName;
     private String lastName;
     private String username;
-    private String passwordHash;
+    private String password;
     private String eMail;
+    private String role = "USER";
 
     // Connecting user and quotes
 
@@ -23,12 +25,14 @@ public class User {
 
     public User() {}
 
-    public User(String firstName, String lastName, String username, String passwordHash, String eMail) {
+    // Remove role from constructor before deploying
+    public User(String firstName, String lastName, String username, String password, String eMail, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
-        this.passwordHash = passwordHash;
+        this.password = password;
         this.eMail = eMail;
+        this.role = role;
     }
 
     public long getUserId() {
@@ -63,12 +67,12 @@ public class User {
         this.username = username;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String geteMail() {
@@ -77,6 +81,14 @@ public class User {
 
     public void seteMail(String eMail) {
         this.eMail = eMail;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public List<Quote> getQuotes() {
@@ -94,8 +106,9 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +
-                ", passwordHash='" + passwordHash + '\'' +
+                ", password='" + password + '\'' +
                 ", eMail='" + eMail + '\'' +
+                ", role='" + role + '\'' +
                 ", quotes=" + quotes +
                 '}';
     }
