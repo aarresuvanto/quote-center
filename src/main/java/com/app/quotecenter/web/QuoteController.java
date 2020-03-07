@@ -23,8 +23,8 @@ public class QuoteController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/")
-    public String welcomeScreen() {
+    @GetMapping("/welcome")
+    public String showWelcomeView() {
         return "welcome";
     }
 
@@ -33,6 +33,12 @@ public class QuoteController {
         model.addAttribute("quote", new Quote());
         model.addAttribute("quotes", quoteRepository.findAll());
         return "newquote";
+    }
+
+    @GetMapping("/allquotes")
+    public String showAllQuotes(Model model) {
+        model.addAttribute("quotes", quoteRepository.findAll());
+        return "allquotes";
     }
 
     @PostMapping("/savequote")

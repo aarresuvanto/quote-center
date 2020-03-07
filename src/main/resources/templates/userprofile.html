@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>User profile</title>
+</head>
+<body>
+<div>
+    <h3>User profile</h3>
+    <div sec:authorize="isAuthenticated()">
+        <h3 sec:authentication="name"></h3>
+    </div>
+    <h4 th:text="'Quotes added by ' + ${#authentication.getPrincipal().getUsername()}"></h4>
+    <ul th:each="quote : ${userquotes}">
+        <li th:text="${quote.text}"></li>
+    </ul>
+</div>
+</body>
+</html>

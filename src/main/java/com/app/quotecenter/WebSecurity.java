@@ -17,13 +17,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/newquote", "/", "/newprofile", "/saveuser", "/h2-console/**").permitAll()
+                .antMatchers("/newquote", "/", "/newprofile", "/saveuser", "/h2-console/**", "/welcome", "/allquotes").permitAll()
                 .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/signin")
-                .defaultSuccessUrl("/newquote")
+                .defaultSuccessUrl("/welcome")
                 .permitAll()
                 .and()
                 .logout()

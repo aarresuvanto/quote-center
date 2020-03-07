@@ -13,7 +13,9 @@
     <div sec:authorize="isAuthenticated()">
         <a th:href="@{/signout}">Sign out</a>
     </div>
-    <h4 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h4>
+    <div sec:authorize="isAuthenticated()">
+        <h3 sec:authentication="name"></h3>
+    </div>
     <h3>Add a new quote</h3>
     <form action="#" th:action="@{/savequote}" th:object="${quote}" method="post">
         <input type="text" th:field="*{text}"></p>
@@ -21,8 +23,6 @@
     </form>
     <ul th:each="quote : ${quotes}">
         <li th:text="${quote.text}"></li>
-        <a th:href="@{/delete/{id}(id=${quote.quoteId})}">Delete</a>
-        <a th:href="@{/edit/{id}(id=${quote.quoteId})}">Edit</a>
     </ul>
 </div>
 </body>

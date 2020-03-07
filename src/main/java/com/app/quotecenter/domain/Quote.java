@@ -1,12 +1,15 @@
 package com.app.quotecenter.domain;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.annotation.Generated;
 import javax.persistence.*;
 
 @Entity
 public class Quote {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name="native", strategy = "native")
     private long quoteId;
     private String text;
 
@@ -16,8 +19,7 @@ public class Quote {
 
     public Quote() {}
 
-    public Quote(long quoteId, String text, User user) {
-        this.quoteId = quoteId;
+    public Quote(String text, User user) {
         this.text = text;
         this.user = user;
     }
