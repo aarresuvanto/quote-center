@@ -2,43 +2,42 @@ package com.app.quotecenter.domain;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Quote {
+public class QuoteList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name="native", strategy = "native")
-    private long quoteId;
-    private String text;
+    private long listId;
+    private String listName;
 
     @ManyToOne
     @JoinColumn(name="userId")
     private User user;
 
-    public Quote() {}
+    public QuoteList() {}
 
-    public Quote(String text, User user) {
-        this.text = text;
+    public QuoteList(String listName, User user) {
+        this.listName = listName;
         this.user = user;
     }
 
-    public String getText() {
-        return text;
+    public long getListId() {
+        return listId;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setListId(long listId) {
+        this.listId = listId;
     }
 
-    public long getQuoteId() {
-        return quoteId;
+    public String getListName() {
+        return listName;
     }
 
-    public void setQuoteId(long quoteId) {
-        this.quoteId = quoteId;
+    public void setListName(String listName) {
+        this.listName = listName;
     }
 
     public User getUser() {
@@ -51,9 +50,9 @@ public class Quote {
 
     @Override
     public String toString() {
-        return "Quote{" +
-                "quoteId=" + quoteId +
-                ", text='" + text + '\'' +
+        return "QuoteList{" +
+                "listId=" + listId +
+                ", listName='" + listName + '\'' +
                 ", user=" + user +
                 '}';
     }
