@@ -29,6 +29,12 @@ public class Quote {
         this.user = user;
     }
 
+    public Quote(String text, User user, QuoteList quoteList) {
+        this.text = text;
+        this.user = user;
+        this.quoteList = quoteList;
+    }
+
     public String getText() {
         return text;
     }

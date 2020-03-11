@@ -22,8 +22,9 @@ public class QuoteList {
 
     public QuoteList() {}
 
-    public QuoteList(String listName) {
+    public QuoteList(String listName, User user) {
         this.listName = listName;
+        this.user = user;
     }
 
     public QuoteList(String listName, User user, List<Quote>quotes) {
