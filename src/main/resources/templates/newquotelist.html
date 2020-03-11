@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>New Quote-List</title>
+</head>
+<body>
+<div>
+    <h3>Create a new Quote-List</h3>
+    <form action="#" th:action="@{/savelist}" th:object="${quotelist}" method="post">
+        <p>List name <input type="text" th:field="*{listName}"></p>
+        <input type="submit" value="Create new list">
+    </form>
+</div>
+</body>
+</html>

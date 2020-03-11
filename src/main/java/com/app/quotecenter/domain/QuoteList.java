@@ -17,11 +17,19 @@ public class QuoteList {
     @JoinColumn(name="userId")
     private User user;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Quote>quotes;
+
     public QuoteList() {}
 
-    public QuoteList(String listName, User user) {
+    public QuoteList(String listName) {
+        this.listName = listName;
+    }
+
+    public QuoteList(String listName, User user, List<Quote>quotes) {
         this.listName = listName;
         this.user = user;
+        this.quotes = quotes;
     }
 
     public long getListId() {
@@ -48,12 +56,21 @@ public class QuoteList {
         this.user = user;
     }
 
+    public List<Quote> getQuotes() {
+        return quotes;
+    }
+
+    public void setQuotes(List<Quote> quotes) {
+        this.quotes = quotes;
+    }
+
     @Override
     public String toString() {
         return "QuoteList{" +
                 "listId=" + listId +
                 ", listName='" + listName + '\'' +
                 ", user=" + user +
+                ", quotes=" + quotes +
                 '}';
     }
 }

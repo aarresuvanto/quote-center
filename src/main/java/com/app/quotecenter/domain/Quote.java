@@ -18,6 +18,10 @@ public class Quote {
     @JoinColumn(name="userId")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name="listId")
+    private QuoteList quoteList;
+
     public Quote() {}
 
     public Quote(String text, User user) {
