@@ -9,6 +9,19 @@
     <h3>Create a new Quote-List</h3>
     <form action="#" th:action="@{/savelist}" th:object="${quotelist}" method="post">
         <p>List name <input type="text" th:field="*{listName}"></p>
+        <p>Quote 1 <input type="text" th:field="*{quotes[0].text}"></p>
+
+
+        <p>Quote 2 <input type="text" th:field="*{quotes[1].text}"></p>
+
+
+        <p>Quote 3 <input type="text" th:field="*{quotes[2].text}"></p>
+
+
+        <p>Quote 4 <input type="text" th:field="*{quotes[3].text}"></p>
+
+
+        <p th:text="${quotelist}">asdf</p>
         <input type="submit" value="Create new list">
     </form>
 </div>

@@ -27,12 +27,6 @@ public class QuoteList {
         this.user = user;
     }
 
-    public QuoteList(String listName, User user, List<Quote>quotes) {
-        this.listName = listName;
-        this.user = user;
-        this.quotes = quotes;
-    }
-
     public long getListId() {
         return listId;
     }

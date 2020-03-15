@@ -59,6 +59,14 @@ public class Quote {
         this.user = user;
     }
 
+    public QuoteList getQuoteList() {
+        return quoteList;
+    }
+
+    public void setQuoteList(QuoteList quoteList) {
+        this.quoteList = quoteList;
+    }
+
     @Override
     public String toString() {
         return "Quote{" +

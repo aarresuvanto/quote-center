@@ -22,23 +22,26 @@ public class QuoteListController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    QuoteRepository quoteRepository;
+
+    // When crete a new quotelist is clicked in welcome.html
+    // New QuoteList object is created and is added to model
+    // The user is redirected to newquotelist.html view
     @GetMapping("/newlist")
     public String newQuoteList(Model model) {
         QuoteList quotelist = new QuoteList();
         model.addAttribute("quotelist", quotelist);
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String currentUserUsername = auth.getName();
-
-        User currentUser = userRepository.findByUsername(currentUserUsername);
-
-        List<Quote>userQuotesAll = currentUser.getQuotes();
-
-        model.addAttribute("allquotes", userQuotesAll);
+        Quote quote = new Quote();
+        model.addAttribute("quote", quote);
 
         return "newquotelist";
     }
 
+    // When clicking create new list in newquotelist.html
+    // The username of the current user is fetched
+    // The currentUser object is added to the QuoteList object received from the view
+    // The new QuoteList object is then saved to the h2 database
     @PostMapping("/savelist")
     public String saveList(@ModelAttribute QuoteList quoteList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -47,13 +50,13 @@ public class QuoteListController {
 
         quoteList.setUser(currentUser);
 
-        List<Quote>allQuotesUser = currentUser.getQuotes();
-        List<Quote>toQuoteList = new ArrayList<Quote>();
+        List<Quote> quotesOnQuoteList = quoteList.getQuotes();
 
-        toQuoteList.add(allQuotesUser.get(1));
-        toQuoteList.add(allQuotesUser.get(2));
-
-        quoteList.setQuotes(toQuoteList);
+        for(int i = 0; i < quotesOnQuoteList.size(); i++) {
+            Quote current = quotesOnQuoteList.get(i);
+            current.setUser(currentUser);
+            current.setQuoteList(quoteList);
+        }
 
         quoteListRepository.save(quoteList);
 
