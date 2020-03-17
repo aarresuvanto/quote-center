@@ -8,10 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class QuoteListController {
@@ -69,16 +71,24 @@ public class QuoteListController {
         String currentUserUsername = auth.getName();
         User currentUser = userRepository.findByUsername(currentUserUsername);
 
-        // Get current user QuoteLists
         List<QuoteList>currentUserQuoteLists = quoteListRepository.findByUser(currentUser);
-        for(int i = 0; i < currentUserQuoteLists.size(); i++) {
-            System.out.println(currentUserQuoteLists.get(i).getListName());
-            System.out.println("");
-        }
 
         model.addAttribute("userquotelists", currentUserQuoteLists);
 
         return "quotelistsuser";
+    }
+
+    @GetMapping("/userquotelist/{id}")
+    public String getSpecificQuoteList(@PathVariable("id") Long listId, Model model) {
+        Optional<QuoteList> quoteList = quoteListRepository.findById(listId);
+
+        List<Quote>quotesOnList = quoteRepository.findByQuoteList(quoteList.get());
+        String listName = quoteList.get().getListName();
+
+        model.addAttribute("listname", listName);
+        model.addAttribute("listquotes", quotesOnList);
+
+        return "quotelistuserdetailed";
     }
 
 }
