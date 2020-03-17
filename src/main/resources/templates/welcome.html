@@ -27,8 +27,12 @@
         <a th:href="@{/profile}">See profile page</a>
     </div>
     <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/userquotelists}">See own Quote-Lists</a>
+    </div>
+    <div sec:authorize="isAuthenticated()">
         <a th:href="@{/newlist}">Create a new Quote-List</a>
     </div>
+</div>
 </div>
 </body>
 </html>

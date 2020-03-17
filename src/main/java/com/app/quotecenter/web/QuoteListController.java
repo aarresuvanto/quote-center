@@ -63,4 +63,22 @@ public class QuoteListController {
         return "redirect:/welcome";
     }
 
+    @GetMapping("/userquotelists")
+    public String getUserQuoteLists(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserUsername = auth.getName();
+        User currentUser = userRepository.findByUsername(currentUserUsername);
+
+        // Get current user QuoteLists
+        List<QuoteList>currentUserQuoteLists = quoteListRepository.findByUser(currentUser);
+        for(int i = 0; i < currentUserQuoteLists.size(); i++) {
+            System.out.println(currentUserQuoteLists.get(i).getListName());
+            System.out.println("");
+        }
+
+        model.addAttribute("userquotelists", currentUserQuoteLists);
+
+        return "quotelistsuser";
+    }
+
 }
