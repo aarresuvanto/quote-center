@@ -27,9 +27,6 @@ public class QuoteListController {
     @Autowired
     QuoteRepository quoteRepository;
 
-    // When crete a new quotelist is clicked in welcome.html
-    // New QuoteList object is created and is added to model
-    // The user is redirected to newquotelist.html view
     @GetMapping("/newlist")
     public String newQuoteList(Model model) {
         QuoteList quotelist = new QuoteList();
@@ -40,10 +37,6 @@ public class QuoteListController {
         return "newquotelist";
     }
 
-    // When clicking create new list in newquotelist.html
-    // The username of the current user is fetched
-    // The currentUser object is added to the QuoteList object received from the view
-    // The new QuoteList object is then saved to the h2 database
     @PostMapping("/savelist")
     public String saveList(@ModelAttribute QuoteList quoteList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -78,7 +71,7 @@ public class QuoteListController {
         return "quotelistsuser";
     }
 
-    @GetMapping("/userquotelist/{id}")
+    @GetMapping("/quotelist/{id}")
     public String getSpecificQuoteList(@PathVariable("id") Long listId, Model model) {
         Optional<QuoteList> quoteList = quoteListRepository.findById(listId);
 
@@ -89,6 +82,13 @@ public class QuoteListController {
         model.addAttribute("listquotes", quotesOnList);
 
         return "quotelistuserdetailed";
+    }
+
+    @GetMapping("/allquotelists")
+    public String getAllQuoteLists(Model model) {
+        Iterable<QuoteList>allQuoteLists = quoteListRepository.findAll();
+        model.addAttribute("allquotelists", allQuoteLists);
+        return "allquotelists";
     }
 
 }

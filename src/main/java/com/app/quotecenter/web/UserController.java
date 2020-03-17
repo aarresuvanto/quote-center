@@ -57,7 +57,7 @@ public class UserController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return "redirect:/newquote";
+        return "redirect:/welcome";
     }
 
     @GetMapping("/signin")

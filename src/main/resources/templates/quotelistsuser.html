@@ -7,7 +7,7 @@
 <body>
     <h3>User Quote-Lists</h3>
     <ul th:each="quotelist : ${userquotelists}">
-        <a th:href="@{/userquotelist/{id}(id=${quotelist.listId})}" th:text="${quotelist.listName}"></a>
+        <a th:href="@{/quotelist/{id}(id=${quotelist.listId})}" th:text="${quotelist.listName}"></a>
     </ul>
 </body>
 </html>
