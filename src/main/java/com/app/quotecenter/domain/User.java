@@ -1,8 +1,10 @@
 package com.app.quotecenter.domain;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.engine.spi.CascadingAction;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,10 +20,12 @@ public class User {
     private String eMail;
     private String role = "USER";
 
-    // Connecting user and quotes
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Quote>quotes;
+
+    // List of quote lists
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<QuoteList>quoteLists;
 
     public User() {}
 

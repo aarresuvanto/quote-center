@@ -18,7 +18,7 @@
     </div>
     <h3>Welcome to Quote-Center</h3>
     <div>
-        <a th:href="@{/allquotes}">See quotes by all users</a>
+        <a th:href="@{/allquotes}">See Quotes by all users</a>
     </div>
     <div sec:authorize="isAuthenticated()">
         <a th:href="@{/newquote}">Add a new quote</a>
@@ -26,6 +26,16 @@
     <div sec:authorize="isAuthenticated()">
         <a th:href="@{/profile}">See profile page</a>
     </div>
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/userquotelists}">See own Quote-Lists</a>
+    </div>
+    <div>
+        <a th:href="@{/allquotelists}">See Quote-Lists by all users</a>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/newlist}">Create a new Quote-List</a>
+    </div>
+</div>
 </div>
 </body>
 </html>

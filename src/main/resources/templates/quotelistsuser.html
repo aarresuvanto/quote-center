@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>User Quote-Lists</title>
+</head>
+<body>
+    <h3>User Quote-Lists</h3>
+    <ul th:each="quotelist : ${userquotelists}">
+        <a th:href="@{/quotelist/{id}(id=${quotelist.listId})}" th:text="${quotelist.listName}"></a>
+    </ul>
+</body>
+</html>

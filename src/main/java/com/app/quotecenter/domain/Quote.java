@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.annotation.Generated;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Quote {
@@ -17,11 +18,21 @@ public class Quote {
     @JoinColumn(name="userId")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name="listId")
+    private QuoteList quoteList;
+
     public Quote() {}
 
     public Quote(String text, User user) {
         this.text = text;
         this.user = user;
+    }
+
+    public Quote(String text, User user, QuoteList quoteList) {
+        this.text = text;
+        this.user = user;
+        this.quoteList = quoteList;
     }
 
     public String getText() {
@@ -46,6 +57,14 @@ public class Quote {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public QuoteList getQuoteList() {
+        return quoteList;
+    }
+
+    public void setQuoteList(QuoteList quoteList) {
+        this.quoteList = quoteList;
     }
 
     @Override
