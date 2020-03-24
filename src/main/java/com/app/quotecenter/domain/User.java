@@ -14,31 +14,41 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name="native", strategy = "native")
+    @Column(nullable = false, unique = true)
     private long userId;
 
     @JsonIgnore
+    @Column(nullable = false)
     private String firstName;
 
     @JsonIgnore
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false, unique = true)
     private String username;
 
     @JsonIgnore
+    @Column(name="password_hash", nullable = false)
     private String password;
 
     @JsonIgnore
+    @Column(nullable = false, unique = true)
     private String eMail;
 
     @JsonIgnore
+    @Column(nullable = false)
     private String role = "USER";
 
     @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @Column(nullable = false)
     private List<Quote>quotes;
 
     // List of quote lists
     @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @Column(nullable = false)
     private List<QuoteList>quoteLists;
 
     public User() {}

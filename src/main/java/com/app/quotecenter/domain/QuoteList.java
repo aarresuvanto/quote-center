@@ -11,7 +11,10 @@ public class QuoteList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name="native", strategy = "native")
+    @Column(nullable = false, unique = true)
     private long listId;
+
+    @Column(nullable = false)
     private String listName;
 
     @ManyToOne
@@ -21,6 +24,7 @@ public class QuoteList {
 
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "quoteList")
+    @Column(nullable = false)
     private List<Quote>quotes;
 
     public QuoteList() {}

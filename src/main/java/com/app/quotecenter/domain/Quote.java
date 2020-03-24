@@ -10,7 +10,10 @@ public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name="native", strategy = "native")
+    @Column(nullable = false, unique = true)
     private long quoteId;
+
+    @Column(nullable = false)
     private String text;
 
     @ManyToOne
