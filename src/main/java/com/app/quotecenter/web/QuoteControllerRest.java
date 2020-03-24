@@ -17,11 +17,14 @@ public class QuoteControllerRest {
     @Autowired
     QuoteRepository quoteRepository;
 
+    // Get all quotes from database
     @GetMapping("/api/quotes")
     public @ResponseBody List<Quote> allQuotes() {
-        return (List<Quote>) quoteRepository.findAll();
+        List<Quote>allQuotesInDb = (List<Quote>) quoteRepository.findAll();
+        return allQuotesInDb;
     }
 
+    // Get a quote from database based on quote id
     @GetMapping("/api/quotes/{id}")
     public @ResponseBody Optional<Quote> quoteById(@PathVariable("id") Long quoteId) {
         return quoteRepository.findById(quoteId);
