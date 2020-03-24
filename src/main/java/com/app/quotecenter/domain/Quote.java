@@ -1,10 +1,9 @@
 package com.app.quotecenter.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Quote {
@@ -19,6 +18,7 @@ public class Quote {
     private User user;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="listId")
     private QuoteList quoteList;
 

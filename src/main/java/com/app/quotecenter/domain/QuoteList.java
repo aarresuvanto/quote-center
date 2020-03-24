@@ -1,5 +1,6 @@
 package com.app.quotecenter.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -14,10 +15,12 @@ public class QuoteList {
     private String listName;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name="userId")
     private User user;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quoteList")
     private List<Quote>quotes;
 
     public QuoteList() {}

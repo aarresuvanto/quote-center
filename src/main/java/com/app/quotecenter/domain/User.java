@@ -1,5 +1,7 @@
 package com.app.quotecenter.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.engine.spi.CascadingAction;
 
@@ -13,17 +15,29 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name="native", strategy = "native")
     private long userId;
+
+    @JsonIgnore
     private String firstName;
+
+    @JsonIgnore
     private String lastName;
     private String username;
+
+    @JsonIgnore
     private String password;
+
+    @JsonIgnore
     private String eMail;
+
+    @JsonIgnore
     private String role = "USER";
 
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Quote>quotes;
 
     // List of quote lists
+    @JsonBackReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<QuoteList>quoteLists;
 
