@@ -9,10 +9,13 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class QuoteController {
@@ -42,13 +45,17 @@ public class QuoteController {
     }
 
     @PostMapping("/savequote")
-    public String saveQuote(@ModelAttribute Quote quote) {
+    public String saveQuote(@ModelAttribute @Valid Quote quote, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "newquote";
+        }
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserUsername = auth.getName();
         User currentUser = userRepository.findByUsername(currentUserUsername);
         quote.setUser(currentUser);
         quoteRepository.save(quote);
-        return"redirect:/newquote";
+        return"redirect:/welcome";
     }
 
     @GetMapping("/delete/{id}")

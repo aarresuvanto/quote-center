@@ -19,6 +19,7 @@
     <h3>Add a new quote</h3>
     <form action="#" th:action="@{/savequote}" th:object="${quote}" method="post">
         <input type="text" th:field="*{text}"></p>
+        <p th:errors="*{text}"></p>
         <input type="submit" value="Submit">
     </form>
 </div>

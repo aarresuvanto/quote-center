@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Quote {
@@ -13,6 +15,7 @@ public class Quote {
     @Column(nullable = false, unique = true)
     private long quoteId;
 
+    @NotBlank
     @Column(nullable = false)
     private String text;
 
