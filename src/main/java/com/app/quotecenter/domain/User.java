@@ -3,10 +3,12 @@ package com.app.quotecenter.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.engine.spi.CascadingAction;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -17,25 +19,36 @@ public class User {
     @Column(nullable = false, unique = true)
     private long userId;
 
+    @NotNull
+    @Size(min=2, max=30)
     @JsonIgnore
     @Column(nullable = false)
     private String firstName;
 
+    @NotNull
+    @Size(min=2, max=30)
     @JsonIgnore
     @Column(nullable = false)
     private String lastName;
 
+    @NotNull
+    @Size(min=2, max=30)
     @Column(nullable = false, unique = true)
     private String username;
 
+    @NotNull
+    @Size(min=4, max=100)
     @JsonIgnore
     @Column(name="password_hash", nullable = false)
     private String password;
 
+    @NotBlank
+    @Email
     @JsonIgnore
     @Column(nullable = false, unique = true)
     private String eMail;
 
+    @NotNull
     @JsonIgnore
     @Column(nullable = false)
     private String role = "USER";
