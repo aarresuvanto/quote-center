@@ -5,8 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-    <h3 th:text="${listname}"></h3>
-    <ul th:each="quote : ${listquotes}">
+    <div>
+        <h3 th:text="${listname}"></h3>
+        <p>Send GET request to following url to get list as JSON  <a th:href="${listresturl}" th:text="${listresturl}"></a></p>
+    </div>
+        <ul th:each="quote : ${listquotes}">
         <li th:text="${quote.text}"></li>
     </ul>
 </body>

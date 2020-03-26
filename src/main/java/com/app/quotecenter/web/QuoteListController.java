@@ -83,8 +83,11 @@ public class QuoteListController {
         List<Quote>quotesOnList = quoteRepository.findByQuoteList(quoteList.get());
         String listName = quoteList.get().getListName();
 
+        String listRestUrl = "http://localhost:8080/api/quotelists/" + listId.toString();
+
         model.addAttribute("listname", listName);
         model.addAttribute("listquotes", quotesOnList);
+        model.addAttribute("listresturl", listRestUrl);
 
         return "quotelistuserdetailed";
     }
