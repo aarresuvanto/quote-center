@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -14,6 +17,8 @@ public class QuoteList {
     @Column(nullable = false, unique = true)
     private long listId;
 
+    @Size(min=1, max=20)
+    @NotNull
     @Column(nullable = false)
     private String listName;
 
@@ -22,6 +27,7 @@ public class QuoteList {
     @JoinColumn(name="userId")
     private User user;
 
+    @Valid
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "quoteList")
     @Column(nullable = false)

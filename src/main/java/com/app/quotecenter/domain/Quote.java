@@ -2,6 +2,7 @@ package com.app.quotecenter.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.boot.convert.DataSizeUnit;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;

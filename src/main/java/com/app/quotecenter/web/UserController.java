@@ -53,7 +53,7 @@ public class UserController {
     }
 
     @PostMapping("/saveuser")
-    public String saveProfile(@ModelAttribute @Valid User user, BindingResult bindingResult, Model model) {
+    public String saveProfile(@ModelAttribute @Valid User user, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             return "signup";
         }

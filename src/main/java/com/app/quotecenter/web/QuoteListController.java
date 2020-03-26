@@ -6,11 +6,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -29,20 +32,22 @@ public class QuoteListController {
 
     @GetMapping("/newlist")
     public String newQuoteList(Model model) {
-        QuoteList quotelist = new QuoteList();
-        model.addAttribute("quotelist", quotelist);
-        Quote quote = new Quote();
-        model.addAttribute("quote", quote);
+        model.addAttribute("quotelist", new QuoteList());
 
         return "newquotelist";
     }
 
     @PostMapping("/savelist")
-    public String saveList(@ModelAttribute QuoteList quoteList) {
+    public String saveList(@ModelAttribute("quotelist") @Valid QuoteList quoteList, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()) {
+            return "newquotelist";
+        }
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String currentUserUsername = auth.getName();
         User currentUser = userRepository.findByUsername(currentUserUsername);
 
+        // Set quotelist user
         quoteList.setUser(currentUser);
 
         List<Quote> quotesOnQuoteList = quoteList.getQuotes();
