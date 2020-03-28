@@ -4,11 +4,20 @@ body {
   background: linear-gradient(to right, #654ea3, #eaafc8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#signInHeadline {
+#signUpCard {
+    margin-top: 100px;
+}
+
+#signUpHeadline {
     color: #654ea3;
 }
 
-#signInDescription {
+#backToStart {
+    color: #654ea3;
+    font-size: 16px;
+}
+
+#signUpDescription {
     font-size: 14px;
 }
 
@@ -20,29 +29,25 @@ body {
     width: 100px;
     font-size: 16px;
 }
-#signInCard {
-    margin-top: 180px;
-}
 
-#signInBtn {
+#signUpBtn {
     background-color: #654ea3;
     border: none;
     margin-top: 24px;
-}
-
-#cardInfo {
-    margin-bottom: 28px;
-}
-
-#backToStart {
-    color: #654ea3;
-    font-size: 16px;
 }
 
 #navbar {
     height: 56px;
 }
 
-#errorMessage {
+#signInLink {
+    color: #654ea3;
+    font-size: 14px;
+    display: block;
+}
+
+p {
+    margin-top: 10px;
     color: #fd79a8;
+    display: block;
 }

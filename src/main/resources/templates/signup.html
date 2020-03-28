@@ -2,24 +2,68 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-    <title>Create Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" src="../css/signup.css" th:href="@{/css/signup.css}">
+    <title>Sign up</title>
 </head>
 <body>
-<h3>Sign up</h3>
-<div>
-    <form action="#" th:action="@{/saveuser}" th:object="${user}" method="post">
-        <p>First name:<input type="text" th:field="*{firstName}"/></p>
-        <p th:errors="*{firstName}"></p>
-        <p>Last name:<input type="text" th:field="*{lastName}"/></p>
-        <p th:errors="*{lastName}"></p>
-        <p>Username<input type="text" th:field="*{username}"/></p>
-        <p th:errors="*{username}"></p>
-        <p>Password<input type="password" th:field="*{password}"/></p>
-        <p th:errors="*{password}"></p>
-        <p>E-mail<input type="text" th:field="*{eMail}"/></p>
-        <p th:errors="*{eMail}"></p>
-        <input type="submit" value="Sign up"/>
-    </form>
-</div>
+    <div>
+    <nav id="navbar" class="navbar navbar-light bg-light">
+        <div class="text-left">
+            <a class="navbar-brand" id="backToStart" th:href="@{/welcome}">Back to start page</a>
+        </div>
+    </nav>
+    <div id="signUpCard" align="center">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <div id="cardInfo">
+                    <h5 id="signUpHeadline" class="text-center card-title">Sign up</h5>
+                    <h6 id="signUpDescription" class="text-center card-subtitle mb-2 text-muted">Enter your credentials</h6>
+                </div>
+                <form action="#" th:action="@{/saveuser}" th:object="${user}" method="post">
+                    <div id="inputFields">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">First name</span>
+                            </div>
+                            <input type="text" th:field="*{firstName}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <p th:errors="*{firstName}"></p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Last name</span>
+                            </div>
+                            <input type="text" th:field="*{lastName}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <p th:errors="*{lastName}"></p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Username</span>
+                            </div>
+                            <input type="text" th:field="*{username}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <p th:errors="*{username}"></p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Password</span>
+                            </div>
+                            <input type="password" th:field="*{password}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <p th:errors="*{password}"></p>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">E-mail</span>
+                            </div>
+                            <input type="text" th:field="*{eMail}" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <p th:errors="*{eMail}"></p>
+                        </div>
+                    </div>
+                    <a id="signInLink" th:href="@{/signin}">Already have a profile?</a>
+                    <input id="signUpBtn" type="submit" value="Sign up" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
 </body>
 </html>
