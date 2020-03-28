@@ -3,11 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" src="../css/style.css" th:href="@{/css/style.css}">
+    <link rel="stylesheet" src="../css/style.css" th:href="@{/css/welcome.css}">
     <title>Quote-Center</title>
 </head>
 <body>
-<nav class="navbar navbar-light bg-light">
+<nav id="navbar" class="navbar navbar-light bg-light">
     <div class="text-left">
         <a class="navbar-brand" id="logoTextNavbar" th:href="@{/welcome}">Quote-Center</a>
     </div>
@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">See Quotes by all users</h5>
-                    <p class="card-text">Browse every Quote in the history of Quote-Center</p>
+                    <p class="card-text">Browse all Quotes created by users</p>
                     <a th:href="@{/allquotes}" id="allQuotesBtn" class="btn btn-primary">See all Quotes</a>
                 </div>
             </div>
@@ -38,7 +38,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">See all Quote-Lists</h5>
-                    <p class="card-text">Browse User-Lists created by users</p>
+                    <p class="card-text">Browse Quote-Lists created by users</p>
                     <a th:href="@{/allquotes}" id="allQuoteListsBtn" class="btn btn-primary">See all Quote-Lists</a>
                 </div>
             </div>

@@ -2,19 +2,45 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-    <title>Create Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" src="../css/style.css" th:href="@{/css/signin.css}">
+    <title>Sign in</title>
 </head>
 <body>
-<h3>Sign in</h3>
-<div>
-    <div th:if="${param.error}">
-        <p>Invalid username or password</p>
+<nav id="navbar" class="navbar navbar-light bg-light">
+    <div class="text-left">
+        <a class="navbar-brand" id="backToStart" th:href="@{/welcome}">Back to start page</a>
     </div>
-    <form th:action="@{/signin}" method="post">
-        <div><label>Username: <input type="text" name="username"></input></label></div>
-        <div><label>Password: <input type="password" name="password"></input></label></div>
-        <div><label><input type="submit" value="Sign In"></input></label></div>
-    </form>
+</nav>
+<div id="signInCard" align="center">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <div id="cardInfo">
+                <h5 id="signInHeadline" class="text-center card-title">Sign in</h5>
+                <h6 id="signInDescription" class="text-center card-subtitle mb-2 text-muted">Enter your credentials</h6>
+            </div>
+            <form th:action="@{/signin}" method="post">
+            <div id="inputFields">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span id="usernameInput" class="input-group-text">Username</span>
+                    </div>
+                    <input id="usernameInputField" type="text" name="username" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span id="passwordInput" class="input-group-text">Password  </span>
+                    </div>
+                    <input id="passwordInputField" type="password" name="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+            </div>
+            <div th:if="${param.error}">
+                <p id="errorMessage">Invalid username or password</p>
+            </div>
+            <input id="signInBtn" type="submit" value="Sign in" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

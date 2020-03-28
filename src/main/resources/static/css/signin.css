@@ -1,0 +1,48 @@
+body {
+  background: #654ea3; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #654ea3, #eaafc8); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #654ea3, #eaafc8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#signInDescription {
+    font-size: 14px;
+}
+
+#inputFields {
+    margin-top: 24px;
+}
+
+#passwordInputField {
+    outline-width: 0;
+}
+
+#passwordInput {
+    width: 100px;
+}
+
+#signInCard {
+    margin-top: 180px;
+}
+
+#signInBtn {
+    background-color: #654ea3;
+    border: none;
+    margin-top: 24px;
+}
+
+#cardInfo {
+    margin-bottom: 28px;
+}
+
+#backToStart {
+    color: #654ea3;
+    font-size: 16px;
+}
+
+#navbar {
+    height: 56px;
+}
+
+#errorMessage {
+    color: #fd79a8;
+}

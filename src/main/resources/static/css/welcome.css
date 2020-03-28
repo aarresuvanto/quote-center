@@ -20,6 +20,8 @@ body {
 }
 
 #logoTextNavbar {
+    font-size: 16px;
+    font-weight: semibold;
     color: #654ea3
 }
 
@@ -52,4 +54,8 @@ body {
 
 #descriptionCard {
     margin-top: 100px;
+}
+
+#navbar {
+    height: 56px;
 }
