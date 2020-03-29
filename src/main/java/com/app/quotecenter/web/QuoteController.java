@@ -27,7 +27,12 @@ public class QuoteController {
     UserRepository userRepository;
 
     @GetMapping("/welcome")
-    public String showWelcomeView() {
+    public String showWelcomeView(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserUsername = auth.getName();
+
+        model.addAttribute("username", currentUserUsername);
+
         return "welcome";
     }
 

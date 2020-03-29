@@ -14,10 +14,13 @@
     <div class="text-right">
         <a sec:authorize="isAnonymous()" id="signInNavbar" class="navbar-brand" th:href="@{/signin}">Sign in</a>
         <a sec:authorize="isAnonymous()" id="signUpNavbar" class="navbar-brand" th:href="@{/newprofile}">Sign up</a>
+        <a sec:authorize="isAuthenticated()" id="homeNavbar" class="navbar-brand" th:href="@{/welcome}">Home</a>
+        <a sec:authorize="isAuthenticated()" id="profileNavbar" class="navbar-brand" th:href="@{/profile}">Profile</a>
         <a sec:authorize="isAuthenticated()" id="signOutNavbar" class="navbar-brand" th:href="@{/signout}">Sign out</a>
     </div>
 </nav>
-<div class="container">
+<!-- Following div is shown when the user is not signed in -->
+<div sec:authorize="isAnonymous()" class="container">
     <div class="row">
         <p id="landHeadlineText">Quote-Center</p>
     </div>
@@ -43,6 +46,15 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<!-- Following div is shown when user is signed in -->
+<div sec:authorize="isAuthenticated()" class="container">
+    <div class="row">
+        <p id="landWelcomeText">Welcome</p>
+    </div>
+    <div class="row">
+        <p id="landUsername" th:text="'@' + ${username}"></p>
     </div>
 </div>
 </body>
