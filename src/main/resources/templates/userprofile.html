@@ -38,6 +38,40 @@
             </div>
         </div>
     </div>
+    <div class="text-center container">
+        <h4 id="myQuotes">My Quotes</h4>
+    </div>
+    <div th:each="quote : ${userquotes}" id="quoteCard" class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="card-body">
+                    <p th:text="${quote.text}" class="card-text"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center container">
+        <h4 id="myQuoteLists">My Quote-Lists</h4>
+    </div>
+    <div th:each="quotelist : ${quotelists}" id="quoteListCard" class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col">
+                <div class="card-body">
+                    <h5 th:text="${quotelist.listName}" class="card-text"></h5>
+                </div>
+            </div>
+        </div>
+        <div th:each="quote: ${quotelist.quotes}" class="row">
+            <div class="col">
+                <ul>
+                    <li th:text="${quote.text}"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="footer">
+
+    </div>
 </div>
 </body>
 </html>

@@ -50,6 +50,7 @@ public class UserController {
 
         model.addAttribute("userquotes", quotesToModel);
         model.addAttribute("user", currentUser);
+        model.addAttribute("quotelists", userQuoteLists);
         model.addAttribute("amountOfQuoteLists", amountOfUserQuoteLists);
         model.addAttribute("amountOfQuotes", amountOfUserQuotes);
 

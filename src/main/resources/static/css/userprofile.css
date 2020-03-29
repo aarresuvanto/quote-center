@@ -29,10 +29,11 @@ body {
 }
 
 #profileInfoCard {
-    margin-top: 50px;
+    margin-top: 110px;
     width: 500px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
 }
 
 #profileCardUsername {
@@ -61,6 +62,30 @@ body {
     margin-left: 25px;
 }
 
-#quoteGrid {
-width: 500px;
+#quoteCard {
+     margin-left: auto;
+     margin-right: auto;
+     width: 500px;
+     margin-top: 30px;
+ }
+
+ #quoteListCard {
+     margin-left: auto;
+     margin-right: auto;
+     padding-bottom: 14px;
+     width: 500px;
+     margin-top: 30px;
+ }
+
+#myQuotes {
+    color: white;
+}
+
+#myQuoteLists {
+    margin-top: 70px;
+    color: white;
+}
+
+#footer {
+    margin-top: 200px;
 }
