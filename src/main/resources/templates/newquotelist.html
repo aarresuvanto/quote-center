@@ -2,24 +2,109 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" src="../css/newquotelist.css" th:href="@{/css/newquotelist.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>New Quote-List</title>
 </head>
 <body>
 <div>
-    <h3>Create a new Quote-List</h3>
-    <form action="#" th:action="@{/savelist}" th:object="${quotelist}" method="post">
-        <p>List name <input type="text" th:field="*{listName}"></p>
-        <p th:errors="*{listName}"></p>
-        <p>Quote 1 <input type="text" th:field="*{quotes[0].text}"></p>
-        <p th:errors="*{quotes[0].text}"></p>
-        <p>Quote 2 <input type="text" th:field="*{quotes[1].text}"></p>
-        <p th:errors="*{quotes[1].text}"></p>
-        <p>Quote 3 <input type="text" th:field="*{quotes[2].text}"></p>
-        <p th:errors="*{quotes[2].text}"></p>
-        <p>Quote 4 <input type="text" th:field="*{quotes[3].text}"></p>
-        <p th:errors="*{quotes[3].text}"></p>
-        <input type="submit" value="Create new list">
-    </form>
+    <nav id="navbar" class="navbar navbar-light bg-light">
+        <div class="text-left">
+            <a id="logoTextNavbar" class="navbar-brand" th:href="@{/profile}">Back</a>
+        </div>
+        <div class="text-right">
+            <a sec:authorize="isAuthenticated()" id="homeNavbar" class="navbar-brand" th:href="@{/welcome}" >Home</a>
+            <a sec:authorize="isAuthenticated()" id="profileNavbar" class="navbar-brand" th:href="@{/profile}">Profile</a>
+            <a sec:authorize="isAuthenticated()" id="signOutNavbar" class="navbar-brand" th:href="@{/signout}">Sign out</a>
+        </div>
+    </nav>
+    <div id="newQuoteListCard" align="center">
+        <div class="card" style="width: 35rem;">
+            <div class="card-body">
+                <div>
+                    <h5 id="cardInfo" class="text-center card-title">New Quote-List</h5>
+                </div>
+                <form action="#" th:object="${quotelist}" th:action="@{../savelist}" method="post">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text">List name</span>
+                                </div>
+                                <input th:field="*{listName}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p th:errors="*{listName}"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text">Quote 1</span>
+                                </div>
+                                <input th:field="*{quotes[0].text}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p th:errors="*{quotes[0].text}"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text">Quote 2</span>
+                                </div>
+                                <input th:field="*{quotes[1].text}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p th:errors="*{quotes[1].text}"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text">Quote 3</span>
+                                </div>
+                                <input th:field="*{quotes[2].text}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p th:errors="*{quotes[2].text}"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text">Quote 4</span>
+                                </div>
+                                <input th:field="*{quotes[3].text}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p th:errors="*{quotes[3].text}"></p>
+                        </div>
+                    </div>
+                    <input id="saveQuoteListBtn" type="submit" value="Save" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

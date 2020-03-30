@@ -16,7 +16,7 @@ public class Quote {
     @Column(nullable = false, unique = true)
     private long quoteId;
 
-    @NotBlank
+    @NotBlank(message = "Must not be blank")
     @Column(nullable = false)
     private String text;
 

@@ -4,18 +4,8 @@ body {
   background: linear-gradient(to right, #654ea3, #eaafc8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#editQuoteCard {
+#newQuoteCard {
     margin-top: 180px;
-}
-
-#saveQuoteBtn {
-    margin-top: 12px;
-    border: none;
-    background-color: #654ea3;
-}
-
-#cardInfo {
-    padding-bottom: 12px;
 }
 
 #navbar {
@@ -42,6 +32,21 @@ body {
     color: #654ea3;
 }
 
+#saveQuoteBtn {
+    margin-top: 12px;
+    border: none;
+    background-color: #654ea3;
+}
+
+#cardInfo {
+    padding-bottom: 12px;
+}
+
+#errorMessage {
+    color: #fd79a8;
+}
+
 .input-group-text {
     width: 100px;
 }
+

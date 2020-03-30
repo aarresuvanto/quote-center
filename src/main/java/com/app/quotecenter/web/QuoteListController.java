@@ -60,7 +60,7 @@ public class QuoteListController {
 
         quoteListRepository.save(quoteList);
 
-        return "redirect:/welcome";
+        return "redirect:/profile";
     }
 
     @GetMapping("/userquotelists")

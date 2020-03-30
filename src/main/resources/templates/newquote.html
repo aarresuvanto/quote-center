@@ -2,26 +2,50 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <link rel="stylesheet" src="../css/newquote.css" th:href="@{/css/newquote.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>New Quote</title>
 </head>
 <body>
 <div>
-    <div sec:authorize="isAnonymous()">
-        <a th:href="@{/newprofile}">Sign up</a>
-        <a th:href="@{/signin}">Sign in</a>
+    <nav id="navbar" class="navbar navbar-light bg-light">
+        <div class="text-left">
+            <a id="logoTextNavbar" class="navbar-brand" th:href="@{/profile}">Back</a>
+        </div>
+        <div class="text-right">
+            <a sec:authorize="isAuthenticated()" id="homeNavbar" class="navbar-brand" th:href="@{/welcome}" >Home</a>
+            <a sec:authorize="isAuthenticated()" id="profileNavbar" class="navbar-brand" th:href="@{/profile}">Profile</a>
+            <a sec:authorize="isAuthenticated()" id="signOutNavbar" class="navbar-brand" th:href="@{/signout}">Sign out</a>
+        </div>
+    </nav>
+    <div id="newQuoteCard" align="center">
+        <div class="card" style="width: 35rem;">
+            <div class="card-body">
+                <div>
+                    <h5 id="cardInfo" class="text-center card-title">New Quote</h5>
+                </div>
+                <form action="#" th:object="${quote}" th:action="@{../savequote}" method="post">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span id="usernameInput" class="input-group-text">Quote</span>
+                                </div>
+                                <input type="hidden" th:field="*{quoteId}"/>
+                                <input id="quoteInputField" th:field="*{text}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p id="errorMessage" th:errors="*{text}"></p>
+                        </div>
+                    </div>
+                    <input id="saveQuoteBtn" type="submit" value="Add" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
     </div>
-    <div sec:authorize="isAuthenticated()">
-        <a th:href="@{/signout}">Sign out</a>
-    </div>
-    <div sec:authorize="isAuthenticated()">
-        <h3 sec:authentication="name"></h3>
-    </div>
-    <h3>Add a new quote</h3>
-    <form action="#" th:action="@{/savequote}" th:object="${quote}" method="post">
-        <input type="text" th:field="*{text}"></p>
-        <p th:errors="*{text}"></p>
-        <input type="submit" value="Submit">
-    </form>
 </div>
 </body>
 </html>
