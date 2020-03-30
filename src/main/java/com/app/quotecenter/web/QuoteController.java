@@ -60,13 +60,13 @@ public class QuoteController {
         User currentUser = userRepository.findByUsername(currentUserUsername);
         quote.setUser(currentUser);
         quoteRepository.save(quote);
-        return"redirect:/welcome";
+        return"redirect:/profile";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteQuote(@PathVariable("id") Long quoteId, Model model) {
         quoteRepository.deleteById(quoteId);
-        return "redirect:/newquote";
+        return "redirect:/profile";
     }
 
     @GetMapping("/edit/{id}")

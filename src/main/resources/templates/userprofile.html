@@ -29,10 +29,12 @@
                     <div id="profileCardQuotes" class="text-center col">
                         <h5 class="card-title">Quotes</h5>
                         <h6 th:text="${amountOfQuotes}" class="card-subtitle mb-2 text-muted"></h6>
+                        <a th:href="@{/newquote}" id="newQuoteBtn" class="btn btn-primary btn-sm">New Quote</a>
                     </div>
                     <div id="profileCardQuoteLists" class="text-center col">
                         <h5 class="card-title">Quote-Lists</h5>
                         <h6 th:text="${amountOfQuoteLists}" class="card-subtitle mb-2 text-muted"></h6>
+                        <a th:href="@{/newlist}" id="newListBtn" class="btn btn-primary btn-sm">New List</a>
                     </div>
                 </div>
             </div>
@@ -42,10 +44,18 @@
         <h4 id="myQuotes">My Quotes</h4>
     </div>
     <div th:each="quote : ${userquotes}" id="quoteCard" class="card mb-3">
-        <div class="row no-gutters">
-            <div class="col">
-                <div class="card-body">
+        <div class="card-body">
+            <div class="row no-gutters">
+                <div class="col">
                     <p th:text="${quote.text}" class="card-text"></p>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div id="editBtnDiv">
+                    <a th:href="@{/edit/{id}(id=${quote.quoteId})}" id="quoteEditBtn" class="btn btn-primary btn-sm">Edit</a>
+                </div>
+                <div id="deleteBtnDiv">
+                    <a th:href="@{/delete/{id}(id=${quote.quoteId})}" id="quoteDeleteBtn" class="btn btn-primary btn-sm">Delete</a>
                 </div>
             </div>
         </div>
@@ -64,7 +74,7 @@
         <div th:each="quote: ${quotelist.quotes}" class="row">
             <div class="col">
                 <ul>
-                    <li th:text="${quote.text}"></li>
+                    <li id="quoteListText" th:text="${quote.text}"></li>
                 </ul>
             </div>
         </div>
