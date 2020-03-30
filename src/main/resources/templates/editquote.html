@@ -1,17 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <link rel="stylesheet" src="../css/editquote.css" th:href="@{/css/editquote.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Edit Quote</title>
 </head>
 <body>
 <div>
-    <h3>Edit Quote</h3>
-    <form action="#" th:object="${quote}" th:action="@{../savequote}" method="post">
-        <input type="hidden" th:field="*{quoteId}"/>
-        <input type="text" th:field="*{text}"/>
-        <input type="submit" value="Save"/>
-    </form>
+    <nav id="navbar" class="navbar navbar-light bg-light">
+        <div class="text-left">
+            <a id="logoTextNavbar" class="navbar-brand" th:href="@{/profile}">Back</a>
+        </div>
+        <div class="text-right">
+            <a sec:authorize="isAuthenticated()" id="homeNavbar" class="navbar-brand" th:href="@{/welcome}" >Home</a>
+            <a sec:authorize="isAuthenticated()" id="profileNavbar" class="navbar-brand" th:href="@{/profile}">Profile</a>
+            <a sec:authorize="isAuthenticated()" id="signOutNavbar" class="navbar-brand" th:href="@{/signout}">Sign out</a>
+        </div>
+    </nav>
+    <div id="editQuoteCard" align="center">
+        <div class="card" style="width: 35rem;">
+            <div class="card-body">
+                <div>
+                    <h5 id="cardInfo" class="text-center card-title">Edit Quote</h5>
+                </div>
+                <form action="#" th:object="${quote}" th:action="@{../savequote}" method="post">
+                    <div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span id="usernameInput" class="input-group-text">Quote</span>
+                            </div>
+                            <input type="hidden" th:field="*{quoteId}"/>
+                            <input id="quoteInputField" th:field="*{text}" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <input id="saveQuoteBtn" type="submit" value="Save" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
