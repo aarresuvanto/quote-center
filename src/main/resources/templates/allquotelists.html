@@ -31,6 +31,11 @@
                     </div>
                 </div>
             </div>
+            <div id="restLinkRow" class="row no-gutters">
+                <div class="col">
+                        <a id="restLink" th:href="${baseurl} + ${quotelist.listId}" class="card-text">Get list as JSON</a>
+                </div>
+            </div>
             <div th:each="quote: ${quotelist.quotes}" id="quotes" class="row">
                 <div class="col">
                     <ul>

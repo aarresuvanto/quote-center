@@ -48,11 +48,15 @@ public class UserController {
         int amountOfUserQuoteLists = userQuoteLists.size();
         int amountOfUserQuotes = quotesToModel.size();
 
+        String listRestUrlBase = "http://localhost:8080/api/quotelists/";
+
+
         model.addAttribute("userquotes", quotesToModel);
         model.addAttribute("user", currentUser);
         model.addAttribute("quotelists", userQuoteLists);
         model.addAttribute("amountOfQuoteLists", amountOfUserQuoteLists);
         model.addAttribute("amountOfQuotes", amountOfUserQuotes);
+        model.addAttribute("baseurl", listRestUrlBase);
 
         return "userprofile";
     }

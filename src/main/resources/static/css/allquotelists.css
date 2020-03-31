@@ -41,3 +41,12 @@ body {
     margin-bottom: 60px;
     color: white;
 }
+
+#restLink {
+    color: #654ea3;
+    margin-left: 20px;
+}
+
+#restLinkRow {
+    margin-bottom: 16px;
+}

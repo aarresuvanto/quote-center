@@ -95,6 +95,10 @@ public class QuoteListController {
     @GetMapping("/allquotelists")
     public String getAllQuoteLists(Model model) {
         Iterable<QuoteList>allQuoteLists = quoteListRepository.findAll();
+
+        String listRestUrlBase = "http://localhost:8080/api/quotelists/";
+
+        model.addAttribute("baseurl", listRestUrlBase);
         model.addAttribute("allquotelists", allQuoteLists);
         return "allquotelists";
     }
