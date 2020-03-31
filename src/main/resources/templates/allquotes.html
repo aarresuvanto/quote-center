@@ -35,7 +35,7 @@
                     <p th:text="${quote.text}" class="card-text"></p>
                 </div>
             </div>
-            <div class="row no-gutters">
+            <div sec:authorize="isAuthenticated()" th:if="${quote.user.getUsername()} eq ${#authentication.getPrincipal().getUsername()}" class="row no-gutters">
                 <div id="editBtnDiv">
                     <a th:href="@{/edit/{id}(id=${quote.quoteId})}" id="quoteEditBtn" class="btn btn-primary btn-sm">Edit</a>
                 </div>
