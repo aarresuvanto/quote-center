@@ -81,3 +81,35 @@ body {
     margin-left: 20px;
     color: #F5F5F5;
 }
+
+#authenticatedFirstRow {
+    margin-top: 42px;
+}
+
+#authenticatedSecondRow {
+    margin-top: 28px;
+}
+
+#authenticatedThirdRow {
+    margin-top: 28px;
+}
+
+#authenticatedQuoteListsBtn {
+    background-color: #654ea3;
+    border: none;
+}
+
+#authenticatedQuoteBtn {
+    background-color: #654ea3;
+    border: none;
+}
+
+#myQuotesBtn {
+    background-color: #654ea3;
+    border: none;
+}
+
+#myQuoteListsBtn {
+    background-color: #654ea3;
+    border: none;
+}

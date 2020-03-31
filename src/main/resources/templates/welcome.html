@@ -31,7 +31,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">See Quotes by all users</h5>
+                    <h5 class="card-title">Quotes by all users</h5>
                     <p class="card-text">Browse all Quotes created by users</p>
                     <a th:href="@{/allquotes}" id="allQuotesBtn" class="btn btn-primary">See all Quotes</a>
                 </div>
@@ -40,7 +40,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">See all Quote-Lists</h5>
+                    <h5 class="card-title">All Quote-Lists</h5>
                     <p class="card-text">Browse Quote-Lists created by users</p>
                     <a th:href="@{/allquotelists}" id="allQuoteListsBtn" class="btn btn-primary">See all Quote-Lists</a>
                 </div>
@@ -55,6 +55,46 @@
     </div>
     <div class="row">
         <p id="landUsername" th:text="'@' + ${username}"></p>
+    </div>
+    <div id="authenticatedFirstRow" class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quotes by all users</h5>
+                    <p class="card-text">Browse all Quotes created by users</p>
+                    <a th:href="@{/allquotes}" id="authenticatedQuoteBtn" class="btn btn-primary">See all Quotes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">All Quote-Lists</h5>
+                    <p class="card-text">Browse Quote-Lists created by users</p>
+                    <a th:href="@{/allquotelists}" id="authenticatedQuoteListsBtn" class="btn btn-primary">See all Quote-Lists</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="authenticatedSecondRow" class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">My Quotes</h5>
+                    <p class="card-text">Quotes I have added</p>
+                    <a th:href="@{/profile}" id="myQuotesBtn" class="btn btn-primary">See my Quotes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">My Quote-Lists</h5>
+                    <p class="card-text">Quote-Lists I have added</p>
+                    <a th:href="@{/profile}" id="myQuoteListsBtn" class="btn btn-primary">See ny Quote-Lists</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

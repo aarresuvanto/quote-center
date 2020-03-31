@@ -2,12 +2,46 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>All Quote-Lists</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" src="../css/allquotelists.css" th:href="@{/css/allquotelists.css}">
+    <title>All Lists</title>
 </head>
 <body>
-    <h3>All Quote-Lists</h3>
-    <ul th:each="quotelist : ${allquotelists}">
-        <a th:href="@{/quotelist/{id}(id=${quotelist.listId})}" th:text="${quotelist.listName} + ', by ' + ${quotelist.user.getUsername()}"></a>
-    </ul>
+    <nav id="navbar" class="navbar navbar-light bg-light">
+        <div class="text-left">
+            <a class="navbar-brand" id="logoTextNavbar" th:href="@{/welcome}">Quote-Center</a>
+        </div>
+        <div id="navbarTextRight" class="text-right">
+            <a sec:authorize="isAnonymous()" id="signInNavbar" class="navbar-brand" th:href="@{/signin}">Sign in</a>
+            <a sec:authorize="isAnonymous()" id="signUpNavbar" class="navbar-brand" th:href="@{/newprofile}">Sign up</a>
+            <a sec:authorize="isAuthenticated()" id="homeNavbar" class="navbar-brand" th:href="@{/welcome}">Home</a>
+            <a sec:authorize="isAuthenticated()" id="profileNavbar" class="navbar-brand" th:href="@{/profile}">Profile</a>
+            <a sec:authorize="isAuthenticated()" id="signOutNavbar" class="navbar-brand" th:href="@{/signout}">Sign out</a>
+        </div>
+    </nav>
+    <div>
+        <div class="text-center container">
+            <h4 id="quoteListHeadline">Quote-Lists by all users</h4>
+        </div>
+        <div th:each="quotelist : ${allquotelists}" id="quoteListCard" class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col">
+                    <div class="card-body">
+                        <h5 th:text="${quotelist.listName} + ' by @' + ${quotelist.user.getUsername()}" class="card-text"></h5>
+                    </div>
+                </div>
+            </div>
+            <div th:each="quote: ${quotelist.quotes}" id="quotes" class="row">
+                <div class="col">
+                    <ul>
+                        <li id="quoteListText" th:text="${quote.text}"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="footer">
+
+    </div>
 </body>
 </html>
