@@ -18,16 +18,6 @@ body {
     color: #654ea3;
 }
 
-#signInNavbar {
-    font-size: 16px;
-    color: #654ea3
-}
-
-#signUpNavbar {
-    font-size: 16px;
-    color: #654ea3
-}
-
 #profileNavbar {
     font-size: 16px;
     color: #654ea3;
@@ -38,25 +28,52 @@ body {
     color: #654ea3;
 }
 
-#quoteListCard {
-    width: 500px;
-    padding-bottom: 8px;
-    margin-top: 22px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-#quoteListHeadline {
+#allQuotesHeadline {
+    color: white;
     margin-top: 80px;
     margin-bottom: 60px;
-    color: white;
 }
 
-#restLink {
-    color: #654ea3;
-    margin-left: 20px;
-}
+#quoteCard {
+     margin-left: auto;
+     margin-right: auto;
+     width: 500px;
+     margin-top: 30px;
+ }
 
-#restLinkRow {
-    margin-bottom: 16px;
-}
+ #editBtnDiv {
+     margin-top: 20px;
+     width: 50px;
+ }
+
+ #deleteBtnDiv {
+     margin-top: 20px;
+ }
+
+ #quoteEditBtn {
+     background-color: #654ea3;
+     border: none;
+ }
+
+ #quoteDeleteBtn {
+     background-color: #654ea3;
+     border: none;
+ }
+
+ #username {
+    margin-bottom: 12px;
+ }
+
+ #footer {
+    margin-top: 180px;
+ }
+
+ #signInNavbar {
+     font-size: 16px;
+     color: #654ea3
+ }
+
+ #signUpNavbar {
+     font-size: 16px;
+     color: #654ea3
+ }

@@ -12,9 +12,9 @@
             <a class="navbar-brand" id="logoTextNavbar" th:href="@{/welcome}">Quote-Center</a>
         </div>
         <div id="navbarTextRight" class="text-right">
+            <a id="homeNavbar" class="navbar-brand" th:href="@{/welcome}">Home</a>
             <a sec:authorize="isAnonymous()" id="signInNavbar" class="navbar-brand" th:href="@{/signin}">Sign in</a>
             <a sec:authorize="isAnonymous()" id="signUpNavbar" class="navbar-brand" th:href="@{/newprofile}">Sign up</a>
-            <a sec:authorize="isAuthenticated()" id="homeNavbar" class="navbar-brand" th:href="@{/welcome}">Home</a>
             <a sec:authorize="isAuthenticated()" id="profileNavbar" class="navbar-brand" th:href="@{/profile}">Profile</a>
             <a sec:authorize="isAuthenticated()" id="signOutNavbar" class="navbar-brand" th:href="@{/signout}">Sign out</a>
         </div>

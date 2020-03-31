@@ -2,17 +2,50 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
-    <title>All quotes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" src="../css/allquotes.css" th:href="@{/css/allquotes.css}">
+    <title>All Quotes</title>
 </head>
 <body>
 <div>
-    <div sec:authorize="isAuthenticated()">
-        <h3 sec:authentication="name"></h3>
+    <nav id="navbar" class="navbar navbar-light bg-light">
+        <div class="text-left">
+            <a id="logoTextNavbar" class="navbar-brand" th:href="@{/welcome}">Quote-Center</a>
+        </div>
+        <div class="text-right">
+            <a id="homeNavbar" class="navbar-brand" th:href="@{/welcome}">Home</a>
+            <a sec:authorize="isAnonymous()" id="signInNavbar" class="navbar-brand" th:href="@{/signin}">Sign in</a>
+            <a sec:authorize="isAnonymous()" id="signUpNavbar" class="navbar-brand" th:href="@{/newprofile}">Sign up</a>
+            <a sec:authorize="isAuthenticated()" id="profileNavbar" class="navbar-brand" th:href="@{/profile}">Profile</a>
+            <a sec:authorize="isAuthenticated()" id="signOutNavbar" class="navbar-brand" th:href="@{/signout}">Sign out</a>
+        </div>
+    </nav>
+    <div class="text-center container">
+        <h4 id="allQuotesHeadline">Quotes by all users</h4>
     </div>
-    <h3>Quotes by all users</h3>
-    <ul th:each="quote : ${quotes}">
-        <li th:text="${quote.text} + ', by ' + ${quote.user.getUsername()}"></li>
-    </ul>
+    <div th:each="quote : ${quotes}" id="quoteCard" class="card mb-3">
+        <div class="card-body">
+            <div class="row no-gutters">
+                <div class="col">
+                    <h5 id="username" th:text="'@' + ${quote.user.getUsername()}" class="card-text"></h5>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col">
+                    <p th:text="${quote.text}" class="card-text"></p>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div id="editBtnDiv">
+                    <a th:href="@{/edit/{id}(id=${quote.quoteId})}" id="quoteEditBtn" class="btn btn-primary btn-sm">Edit</a>
+                </div>
+                <div id="deleteBtnDiv">
+                    <a th:href="@{/delete/{id}(id=${quote.quoteId})}" id="quoteDeleteBtn" class="btn btn-primary btn-sm">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="container"></div>
 </div>
 </body>
 </html>
