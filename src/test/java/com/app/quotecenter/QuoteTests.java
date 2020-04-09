@@ -63,7 +63,6 @@ public class QuoteTests {
 
     @Test
     void validateQuote() {
-        // Test should throw an error because Quote entities are validated and should contain at least the Quote text
         Quote quote = new Quote();
         Assertions.assertThrows(ConstraintViolationException.class, () -> {
             quoteRepository.save(quote);

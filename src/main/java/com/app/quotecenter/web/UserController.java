@@ -85,9 +85,4 @@ public class UserController {
         return "redirect:/welcome";
     }
 
-    @GetMapping("/success")
-    public String signInSuccess() {
-        return "success";
-    }
-
 }
