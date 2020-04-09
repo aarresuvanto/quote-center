@@ -31,6 +31,10 @@ public class Quote {
 
     public Quote() {}
 
+    public Quote(String text) {
+        this.text = text;
+    }
+
     public Quote(String text, User user) {
         this.text = text;
         this.user = user;
