@@ -96,7 +96,7 @@ public class QuoteListController {
     public String getAllQuoteLists(Model model) {
         Iterable<QuoteList>allQuoteLists = quoteListRepository.findAll();
 
-        String listRestUrlBase = "http://localhost:8080/api/quotelists/";
+        String listRestUrlBase = "https://stark-temple-79114.herokuapp.com/api/quotelists/";
 
         model.addAttribute("baseurl", listRestUrlBase);
         model.addAttribute("allquotelists", allQuoteLists);
