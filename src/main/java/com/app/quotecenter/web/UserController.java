@@ -48,7 +48,7 @@ public class UserController {
         int amountOfUserQuoteLists = userQuoteLists.size();
         int amountOfUserQuotes = quotesToModel.size();
 
-        String listRestUrlBase = "http://localhost:8080/api/quotelists/";
+        String listRestUrlBase = "https://stark-temple-79114.herokuapp.com/api/quotelists/";
 
 
         model.addAttribute("userquotes", quotesToModel);
