@@ -19,7 +19,7 @@ public class QuotecenterApplication {
 	@Bean
 	public CommandLineRunner runner(UserRepository userRepository, QuoteRepository quoteRepository, QuoteListRepository quoteListRepository) {
 		return(args) -> {
-			User user = new User("Joku", "Joku", "first_user", "$2y$12$avwWO0O7bN901XUjrvb3vOG2UW4t0zDf3baPBJ8xxKvjJi6GmaYRa", "joku@joku.com", "USER");
+			User user = new User("Joku", "Joku", "first_user", "$2y$12$qni98NR/AmFjv8W4FjogVezQys5zjDqldGIdd0FPnRvZe21bL5oDy", "joku@joku.com", "USER");
 
 			userRepository.save(user);
 
